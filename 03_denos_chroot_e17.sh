@@ -12,20 +12,9 @@ source ./denos_config.txt
 #echo "debian-live" > /etc/hostname
 echo $DISTRO_NAME > /etc/hostname 
 
-apt-cache search linux-image
-
-apt-get update && \
+apt-get update
 apt-get install -y --no-install-recommends \
-    linux-image-4.9.0-8-amd64 \
-    live-boot \
-    systemd-sysv
-
-apt-get install -y --no-install-recommends \
-    network-manager net-tools wireless-tools wpagui \
-    curl openssh-server openssh-client \
-    blackbox xserver-xorg-core xserver-xorg xinit xterm \
-    screenfetch screen lxterminal vim \
-    nano e17* && \
+    "$BASEPKG" e17* && \
 apt-get clean
 
 passwd root
